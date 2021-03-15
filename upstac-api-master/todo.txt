@@ -1,0 +1,36 @@
+git remote add origin https://gitlab.com/upgrad-covid-api/covid-track-ui.git
+
+
+  
+Register Doctor
+Register Tester  
+
+Upload DOcument for User
+
+
+Approve User 
+
+Reject User 
+
+
+
+TestRequest
+	create
+	Assign Test Request (from Tester)
+	Assign Consultation Request (from Doctor)
+
+TestResult
+	
+	updateObservation requestID (from Tester)
+		update Testrequest status
+	
+	updateConsultation requestID (from Doctor)
+		update Testrequest status
+		
+		
+	
+View All TestRequests
+		
+	
+	
+	
