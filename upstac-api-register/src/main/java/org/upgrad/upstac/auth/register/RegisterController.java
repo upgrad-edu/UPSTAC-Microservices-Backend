@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -19,9 +21,8 @@ import static org.upgrad.upstac.exception.UpgradResponseStatusException.asBadReq
 
 @RestController
 public class RegisterController {
-
-    @Value("${rootURL}")
-    private String rootURL;
+	@Value("${rootURL}")
+    private static  String rootURL;
 
     private RegisterService registerService;
 
@@ -38,7 +39,7 @@ public class RegisterController {
             String userName = user.getUserName();
             String email = user.getEmail();
             String phone = user.getPhoneNumber();
-            if (!validateUser(userName,email,phone)) {
+            if (!registerService.validateUser(userName,email,phone)) {
                RegisterRequest newUser = registerService.addUser(user);
                return newUser;
             } else {
@@ -52,7 +53,7 @@ public class RegisterController {
         String userName = user.getUserName();
         String email = user.getEmail();
         String phone = user.getPhoneNumber();
-        if (!validateUser(userName,email,phone)) {
+        if (!registerService.validateUser(userName,email,phone)) {
             RegisterRequest newDoctor = registerService.addDoctor(user);
             return newDoctor;
         } else {
@@ -66,23 +67,28 @@ public class RegisterController {
         String userName = user.getUserName();
         String email = user.getEmail();
         String phone = user.getPhoneNumber();
-        if (!validateUser(userName,email,phone)) {
+        if (!registerService.validateUser(userName,email,phone)) {
             RegisterRequest newtester = registerService.addTester(user);
             return newtester;
         } else {
             throw asBadRequest("Tester already exists");
         }
     }
-
+/*
     private static boolean validateUser(String userName , String email, String phone)
     {
-        String uri = rootURL + /auth/validateusername/"
+    	//String rootURL="http://localhost:8080";
+    	System.out.println("rootURL"+rootURL);
+        String uri = rootURL + "/auth/validateusername/"
                 + userName + "/"
                 + email + "/"
                 + phone;
         RestTemplate restTemplate = new RestTemplate();
+        System.out.println("printing uri"+uri);
         Boolean result = restTemplate.getForObject(uri, Boolean.class);
         System.out.println(result);
         return result;
     }
+    
+    */
 }

@@ -2,6 +2,7 @@ package org.upgrad.upstac.auth.register;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -46,6 +47,20 @@ public class RegisterService {
         String createUser = rootURL +"/auth/newtester";
         RegisterRequest newtester = restTemplate.postForObject(createUser, request, RegisterRequest.class);
         return newtester;
+    }
+    public  boolean validateUser(String userName , String email, String phone)
+    {
+    	//String rootURL="http://localhost:8080";
+    	System.out.println("rootURL"+rootURL);
+        String uri = rootURL + "/auth/validateusername/"
+                + userName + "/"
+                + email + "/"
+                + phone;
+        RestTemplate restTemplate = new RestTemplate();
+        System.out.println("printing uri"+uri);
+        Boolean result = restTemplate.getForObject(uri, Boolean.class);
+        System.out.println(result);
+        return result;
     }
 
     /*public User addGovernmentAuthority(RegisterRequest user) {

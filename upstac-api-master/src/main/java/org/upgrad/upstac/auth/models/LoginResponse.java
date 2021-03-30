@@ -19,4 +19,8 @@ public class LoginResponse {
         this.message = message;
         this.token = token;
     }
+	public String getToken() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

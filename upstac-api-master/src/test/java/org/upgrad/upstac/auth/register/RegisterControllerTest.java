@@ -54,7 +54,7 @@ class RegisterControllerTest {
     public void when_userservice_throws_error_when_calling_register_user_controller_should_throw_exception() {
 
         RegisterRequest registerRequest = createRegisterRequestWithRandomPinCode("someuser");
-        log.info(registerRequest.toString());
+      //  log.info(registerRequest.toString());
         when(registerService.addUser(registerRequest)).thenThrow(new AppException("User with same name already exists") );
 
         ResponseStatusException exception = assertThrows(ResponseStatusException.class,()->{

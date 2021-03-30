@@ -43,7 +43,7 @@ class GovernmentAuthorityControllerWebApplicationTest {
 
 
 
-
+/*
     @Test
     public void calling_getAll_should_retrieve_all_data() throws Exception{
 
@@ -60,5 +60,5 @@ class GovernmentAuthorityControllerWebApplicationTest {
                 .andDo(print())
                 .andExpect(jsonPath("$.length()", greaterThan(1)));
     }
-
+*/
 }

@@ -28,7 +28,7 @@ class AuthControllerWebApplicationTest {
     @Autowired
     MockMvc mockMvc;
 
-
+/*
 
     @Test
     public void calling_register_tester_should_register_tester_but_status_should_not_be_approved() throws Exception{
@@ -48,6 +48,6 @@ class AuthControllerWebApplicationTest {
                 .andExpect(jsonPath("$.status", equalTo(AccountStatus.INITIATED.name())));
 
 
-    }
+    } */
 
 }

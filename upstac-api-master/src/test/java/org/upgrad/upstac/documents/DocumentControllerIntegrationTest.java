@@ -43,7 +43,7 @@ class DocumentControllerIntegrationTest {
 
 
         assertThat(document.getUser().getId(),equalTo(doctor.getId()));
-        log.info(document.toString());
+        //log.info(document.toString());
         assertNotNull(document.getFileName());
         assertNotNull(document.getId());
         assertNotNull(document.getSize());
